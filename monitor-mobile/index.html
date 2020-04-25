@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>国美双11实时播报</title>
+    <link rel="stylesheet" href="./styles/index.css?v=300">
+    <link rel="icon" href="images/test.png" type="image/x-icon" />
+
+</head>
+<script>
+    window.location = '/monitor-examples/theend.html';//活动结束
+</script>
+
+<body>
+    <div id="loading">
+        <a target="_blank" href="#">
+            <img src="./images/logo.png?v=300">
+            <!--<img class="text-logo" src="/static/image/logo-text.png" width="100/">-->
+        </a>
+    </div>
+    <div>
+        <div class="header">
+
+            <img src="images/test.png" alt="">
+            <span class="title">双11实时播报</span>
+            <br>
+            <span class="date">{{time}}</span>
+
+
+        </div>
+        <div class="center-top">
+
+            <div class="sales">
+                <span class="saleTitle">线上线下实物总销售额 </span>
+                <img src="images/order.png" alt="">
+                <span class="orderNum">{{orderNum}}</span>
+
+                <div class="amount">
+
+                    <span class="dot">¥</span>
+                    <number v-for="(num, index) in saleArr" :update="update" :arr="saleArr" :num="num" :index="index" :delay="1000"></number>
+                </div>
+
+            </div>
+
+            <div class="order">
+                <table class="table">
+                    <tr style="background-color:#8a6d3b;">
+                        <th colspan="2">订单类型</th>
+                        <th>销售额</th>
+                        <th>订单量</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2">线上已支付订单</td>
+                        <td>¥{{channelSale.pay}}</td>
+                        <td>{{orderAmount.pay}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">线下金力订单</td>
+                        <td>¥{{channelSale.jinli}}</td>
+                        <td>{{orderAmount.jinli}}</td>
+                    </tr>
+
+                    <tr>
+                        <td rowspan="3">线上引流订单</td>
+                        <td>场景一</td>
+                        <td>¥{{channelSale.scene1}}</td>
+                        <td>{{orderAmount.scene1}}</td>
+
+
+                    </tr>
+                    <tr>
+                        <td>场景二</td>
+
+
+                        <td>¥{{channelSale.scene2}}</td>
+                        <td>{{orderAmount.scene2}}</td>
+                    </tr>
+                    <tr>
+
+
+                        <td>场景三</td>
+                        <td>¥{{channelSale.scene3}}</td>
+                        <td>{{orderAmount.scene3}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="meifubao">
+            <span>美付宝数据</span>
+            <table class="meifubaoTable">
+                <tr style="background-color:#8a6d3b; ">
+                    <td>地区</td>
+                    <td>销售额</td>
+                    <td>订单量</td>
+                </tr>
+                <tr v-for="item in data">
+                    <td>{{item.type}}</td>
+                    <td>¥{{item.saleAmount}}</td>
+                    <td>{{item.orderCount}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="center-center">
+            <span>线下大区订单销售数据</span>
+            <table class="saleTable">
+                <tr style="background-color:#8a6d3b; ">
+                    <td>地区</td>
+                    <td>销售额</td>
+                    <td>订单量</td>
+                </tr>
+                <tr v-for="item in data">
+                    <td>{{item.regionName}}</td>
+                    <td>¥{{item.saleAmount}}</td>
+                    <td>{{item.orderCount}}</td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="online">
+            <span>线上数据</span>
+            <table class="onlineTable">
+                <tr style="background-color:#8a6d3b; ">
+                    <td></td>
+                    <td>UV</td>
+                    <td>销售额</td>
+                    <td>订单</td>
+                </tr>
+                <tr>
+                    <td>总计</td>
+                    <td>{{uv.total}}</td>
+                    <td>{{channel.total}}</td>
+                    <td>{{order.total}}</td>
+                </tr>
+
+                <tr>
+                    <td>PC</td>
+                    <td>{{uv.pc}}</td>
+                    <td>{{channel.pc}}</td>
+                    <td>{{order.pc}}</td>
+                </tr>
+                <tr>
+                    <td>WAP</td>
+                    <td>{{uv.wap}}</td>
+                    <td>{{channel.wap}}</td>
+                    <td>{{order.wap}}</td>
+                </tr>
+                <tr>
+                    <td>APP</td>
+                    <td>{{uv.app}}</td>
+                    <td>{{channel.app}}</td>
+                    <td>{{order.app}}</td>
+                </tr>
+            </table>
+        </div>
+
+
+
+
+    </div>
+    <script src="./lib/jquery.min.js"></script>
+    <!--<script src="./lib/bootstrap.min.js"></script>-->
+
+    <script src="./lib/vue.min.js?v=300"></script>
+    <!--<script src="./lib/echarts.js?v=234"></script>-->
+    <script src="./js/config.js?v=300"></script>
+    <script src="./js/components.js?v=300"></script>
+    <script src="./js/utils.js?v=300"></script>
+    <script src="./js/loading.js?v=300"></script>
+    <script src="./js/header.js?v=301"></script>
+    <!--<script src="./js/charts.js?v=234"></script>-->
+    <script src="./js/center.js?v=300"></script>
+</body>
+
+</html>

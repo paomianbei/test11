@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>国美大数据实时播报</title>
+    <link rel="icon" href="images/icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./styles/index.css?v=320">
+    <script src="./lib/jquery.min.js?v=243"></script>
+    
+    <script>
+        // window.location = '/monitor-examples/theend.html';//活动结束
+
+//        let url = "/public/userStatus";
+//        $.ajax({
+//            type: "post",
+//            data: "",
+//            url: url,
+//            async: false,
+//            success: function (res) {
+//                var data = JSON.parse(res);
+//
+//                if ( data.success ) {
+//                    data = data.data;
+//                    if ( !data.is_login ) {
+//                        window.location = data.loginUrl + "?returnUrl=" + window.location.href;
+//                    }
+//                } else {
+//                    console.log(`登陆接口返回失败, ${url}`);
+//                    window.location = "/";
+//
+//                }
+//            },
+//            error: function (err) {
+//                console.log("请求接口失败", err);
+//                window.location = "/";
+//
+//            }
+//
+//        });
+    </script>
+
+</head>
+
+<body>
+    <div id="loading">
+        <a target="_blank" href="#">
+            <img src="./images/logo.png?v=301">
+        </a>
+    </div>
+    <div class="header">
+        <!--<img src="images/title.png?v=304" alt="">-->
+        <img src="images/title-33.png?v=304" alt="">
+        <div class="time">{{time}}</div>
+    </div>
+    <div class="container">
+        <div class="left">
+            <div class="left-top">
+                <span class="acce-bar">国美主站UV</span>
+                <div class="border">
+                    <!-- <div class="uvToday "></div> -->
+                    <div class="uvChannel "></div>
+                </div>
+               
+            </div>
+            <div class="left-center">
+                <span class="acce-bar">国美主站UV趋势</span>
+                <div class="border">
+                    <div class="uvTrend"></div>
+                </div>
+                
+            </div>
+            
+            <div class="left-bottom">
+                 <span class="acce-bar">成交金额趋势 </span>
+                <div class="border">
+                    <div class="saleTrend"></div>
+                </div>
+            </div>
+            
+           
+        </div>
+        <div class="center">
+            <div class="center-top">
+                <div class="sales">
+                    <div class="title">
+                         <!--<span class="saleTitle acce-bar">-->
+                         <span class="saleTitle">
+                              <span class="title">成交金额</span>
+                         </span>
+                         <span class="tq-sale">
+                            2018年销售额(万): <span class="tq">{{amount_tq}}</span>
+                            同比: <span class="tq">{{ratio_tb}}
+                                    <span class='green' v-if="flag===1">↑</span>
+                                    <span class='red' v-if="flag===2">↓</span>
+                                </span>
+                        </span>
+                    </div>
+                    <!-- <span class="tip">成交金额=(已支付+货到付款) 实付销售额</span> -->
+                    <!-- <div class="orderList">
+                        <img src="./images/order.png" alt="">
+                        <span>{{orderNum}}</span>
+                    </div> -->
+                    <div class="saleAmount">
+                        <div class="yuan"><span>&yen;</span></div>
+                        <number v-for="(num, index) in saleArr" :update="update" :arr="saleArr" :num="num"
+                                :index="index"
+                                :delay="1000"></number>
+                    </div>
+                    
+                </div>
+                <div class="order">
+                    <div class="phisical">
+                        <span class="phisicalTitle acce-bar">各渠道销售</span>
+                        <table class="orderTable">
+                            <tr class="phisicalCate">
+                                <th>线上商城</th>
+                                <!--<th>扫码支付</th>-->
+                                <th>扫码与分享</th>
+                                <th>来购销售</th>
+                            </tr>
+                            <tr>
+                                <td>{{channelSale.nature}}</td>
+                                <!--<td>{{channelSale.pay}}</td>-->
+                                <td>{{channelSale.scan}}</td>
+                                <td>{{channelSale.mshop}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{orderAmount.nature}}万</td>
+                                <!--<td>{{orderAmount.pay}}万</td>-->
+                                <td>{{orderAmount.scan}}万</td>
+                                <td>{{orderAmount.mshop}}万</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="virtual">
+                        <span class="virtualTitle acce-bar">非实物</span>
+                        <table class="orderTable">
+                            <tr class="virtualCate">
+                                <th>金融</th>
+                                <th>虚拟</th>
+                            </tr>
+                            <tr>
+                                <td>{{channelSale.finance}}</td>
+                                <td>{{channelSale.virtual}}</td>
+                            </tr>
+                            <tr>
+                                <td>{{orderAmount.finance}}万</td>
+                                <td>{{orderAmount.virtual}}万</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="center-center">
+                <span class="acce-bar">各站点销售额分布(万)</span>
+                <div class="border">
+                     <div class="saleChannel"></div>
+                </div>
+               
+            </div>
+            <div class="center-bottom">
+                <span class="acce-bar">各站点订单量分布</span>
+                <div class="border">
+                    <div class="transferRateAndOrder"></div>
+                </div>
+                
+            </div>
+           
+            
+        </div>
+        <!--<div style="width: 30%;height: 100%;">-->
+        <!--<div class="totalTransferRate"></div>-->
+        <!--</div>-->
+        
+        <div class="right">
+            
+            <div class="right-top">
+                 <div class="totalTransferRate"></div>
+            </div>
+        
+            <div class="right-center">
+                <div class="right-Summary">
+                    <div class="border padding">
+                        <div class="realtime-sales">
+                            <p class="title acce-bar">当日渠道销售<span class="time">（{{utils.getTimeDate().today}}）</span></p>
+                            <div class="info">
+                                <p>
+                                    <span><em>门店销售额 (万)</em>{{shop_amt}}</span>
+                                    <span><em>美店销售额 (万)</em>{{mshop_amt}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="offline-sales">
+                            <p class="title acce-bar">累计渠道销售<span class="time">（{{utils.getTimeDate().time}}）</span></p>
+                            <div class="info">
+                                <!--<p>-->
+                                <!--<span><em>商城销售额(万)</em>{{mall_amt_total}}<em class="ratio">完成：20%<br> 同比：30%</em></span>-->
+                                <!--<span><em>门店销售额(万)</em>{{shop_amt_total}}<em class="ratio">完成：20%<br> 同比：30%</em></span>-->
+                                <!--</p>-->
+                                <p>
+                                    <span><em>商城销售额 (万)</em> {{mall_amt_total}}</span>
+                                     <span>
+                                         <em :class="{ratio: true,green: mall_amt_total_tb_ratioFlag===1, red: mall_amt_total_tb_ratioFlag===2 }">同比 </em> {{mall_amt_total_tb_ratio}}
+                                          <i class='green' v-if="mall_amt_total_tb_ratioFlag===1">↑</i>
+                                         <i class='red' v-if="mall_amt_total_tb_ratioFlag===2">↓</i>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span><em>门店销售额 (万)</em> {{shop_amt_total}}</span>
+                                    <span>
+                                        <em  :class="{ratio: true,green: shop_amt_total_tb_ratioFlag===1, red: shop_amt_total_tb_ratioFlag===2 }">同比 </em>{{shop_amt_total_tb_ratio}}
+                                        <i class='green' v-if="shop_amt_total_tb_ratioFlag===1">↑</i>
+                                        <i class='red' v-if="shop_amt_total_tb_ratioFlag===2">↓</i>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span><em>美店销售额 (万)</em> {{mshop_amt_total}}</span>
+                                     <span>
+                                         <em  :class="{ratio: true,green: mshop_amt_total_tb_ratioFlag===1, red: mshop_amt_total_tb_ratioFlag===2 }">同比 </em>{{mshop_amt_total_tb_ratio}}
+                                         <i class='green' v-if="mshop_amt_total_tb_ratioFlag===1">↑</i>
+                                         <i class='red' v-if="mshop_amt_total_tb_ratioFlag===2">↓</i>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border padding">
+                        <div class="divine-voucher">
+                            <p class="title acce-bar">累计神券<span class="time">（{{utils.getTimeDate().time}}）</span></p>
+                            <div class="info">
+                                <p>
+                                    <!-- <span><em>返券数量</em> {{shencoupon.return_shencoupon_cnt}}</span> -->
+                                    <span><em>获取数量</em> {{shencoupon.create_shencoupon_cnt}}</span>
+                                    <span><em>使用数量</em> {{shencoupon.use_shencoupon_cnt}}</span>
+                                </p>
+                                <p>
+                                    <span><em>用券下单金额 (万)</em> {{shencoupon.use_shencoupon_amt}}</span>
+                                    <span><em>APP使用数量</em> {{shencoupon.appuse_shencoupon_cnt}}</span>
+                                </p>
+                                <p>
+                                    <span style="display:inline-block;width:70%;background:'pink';"><em>APP用券下单金额 (万)</em> {{shencoupon.appuse_shencoupon_amt}}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="blue-voucher">-->
+                        <!--<p class="title acce-bar">累计蓝券<span class="time">（{{utils.getTimeDate("offline").time}}）</span></p>-->
+                        <!--<div class="info">-->
+                            <!--<p>-->
+                                <!--<span><em>获取数量</em> {{bluecoupon.create_bluecoupon_cnt}}</span>-->
+                                <!--<span><em>使用数量</em> {{bluecoupon.use_bluecoupon_cnt}}</span>-->
+                            <!--</p>-->
+                            <!--<p>-->
+                                <!--<span><em>用券下单金额 (万)</em> {{bluecoupon.use_bluecoupon_amt}}</span>-->
+                            <!--</p>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="border padding">
+                        <div class="realtime-users">
+                            <p class="title acce-bar">当日用户数据<span class="time">（{{utils.getTimeDate().today}}）</span></p>
+                            <div class="info">
+                                <p>
+                                    <span><em>新注册用户</em>{{user.register_cnt}}</span>
+                                    <span><em>APP新注册用户</em>{{user.app_register_cnt}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="history-users">
+                            <p class="title acce-bar">累计用户数据<span class="time">（{{utils.getTimeDate().time}}）</span></p>
+                            <div class="info">
+                                <p>
+                                    <span><em>新注册用户</em> {{user.register_total}}</span>
+                                    <span><em>APP新注册用户</em> {{user.app_register_total}}</span>
+                                </p>
+                                <p>
+                                    <span><em>新用户下单数</em> {{user.add_newuser_ord_cnt}}</span>
+                                    <span><em>APP新用户下单数</em> {{user.add_app_newuser_ord_cnt}}</span>
+                                </p>
+                                <p>
+                                    <span><em>老用户下单数</em> {{user.add_olduser_ord_cnt}}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <!-- <div class="usersTask">
+                     <div class="todayAct">
+                           <img src="./images/today-act.png" alt="">
+                         <div class="service-wrapper">
+                             <p class="usersTaskTitle acce-bar">APP今日激活</p>
+                           <h4>{{app_register.num}}</h4>
+                           <div class="usersTaskInfo">
+                               <div>
+                                   <span>总激活</span>
+                                    <span>{{app_register.total}}</span>
+                               </div>
+                               <div v-if="+app_register.task !== 0">
+                                   <span>任务完成率</span>
+                                   <span>{{app_register.ratio}}</span>
+                                   <span>任务目标值</span>
+                                   <span>{{app_register.task}}</span>
+                               </div>
+                           </div>
+                         </div>
+
+                         
+                     </div>
+                     <div class="todayReg">
+                           <img src="./images/today-reg.png" alt="">
+                           <div class="service-wrapper">
+                               <p class="usersTaskTitle acce-bar">今日注册</p>
+                           <h4>{{today_register.num}}</h4>
+                           <div class="usersTaskInfo">
+                               <div>
+                                   <span>总注册</span>
+                                   <span>{{today_register.total}}</span>
+                               </div>
+                               <div>
+                               <span>任务目标值</span>
+                               <span>{{today_register.task}}</span>
+                               </div>
+                               
+                               
+                           </div>
+                           </div>
+                       
+                     </div>
+                     <div class="meidianTarget">
+                           <img src="./images/meidian-target.png" alt="">
+                           <div class="service-wrapper">
+                               <p class="usersTaskTitle acce-bar">美店今日订单</p>
+                               <h4>{{mshop_task.num}}</h4>
+                               <div class="usersTaskInfo">
+                                   <div>
+                                       <span>总订单</span>
+                                       <span>{{mshop_task.total}}</span>
+                                   </div>
+                                   <div v-if="+mshop_task.task!==0">
+                                        <span>任务完成率</span>
+                                        <span>{{mshop_task.ratio}}</span>
+                                       <span>任务目标值</span>
+                                       <span>{{mshop_task.task}}</span>
+                                   </div>
+                               </div>
+                           </div>
+                     </div>
+                     <div class="meidianTarget">
+                            <img src="./images/today-reg.png" alt="">
+                            <div class="service-wrapper">
+                                <p class="usersTaskTitle acce-bar">美店今日成交金额</p>
+                                <h4>{{mshop_task_amount.num}}万</h4>
+                                <div class="usersTaskInfo">
+                                    <div>
+                                        <span>总成交金额</span>
+                                        <span>{{mshop_task_amount.total}}万</span>
+                                    </div>
+                                </div>
+                            </div>
+                     </div>
+                 </div> -->
+                
+            </div>
+            <!-- <div class="right-bottom"> -->
+                <!--<div class="groupon">-->
+                     <!--<span class="acce-bar">团抢数据</span>-->
+                     <!--<table class="groupon-table">-->
+                        <!--<tr>-->
+                            <!--<th class="g-head">UV总量</th>-->
+                            <!--<th class="g-head">订单量</th>-->
+                            <!--<th class="g-head">销售额</th>-->
+                            <!--<th class="g-head">转化率</th>-->
+                        <!--</tr>-->
+                        <!--<tr>-->
+                            <!--<td>{{uv}}</td>-->
+                            <!--<td>{{order}}</td>-->
+                        <!---->
+                            <!--<td>{{amount}}</td>-->
+                            <!--<td>{{ratio}}</td>-->
+                        <!--</tr>-->
+                     <!--</table>-->
+                <!--</div>-->
+                <!-- <div class="coupon">
+                    <span class="acce-bar">优惠券数据</span>
+                     <table class="coupon-table">
+                        <tr>
+                            <th class="c-head">红券领取量</th>
+                            <th class="c-head">红券使用量</th>
+                            <th class="c-head2">蓝券领取量</th>
+                            <th class="c-head2">蓝券使用量</th>
+                        </tr>
+                        <tr>
+                            <td>{{red_get}}</td>
+                            <td>{{red_use}}</td>
+                        
+                            <td>{{blue_get}}</td>
+                            <td>{{blue_use}}</td>
+                        </tr>
+                     </table>
+                </div> -->
+            <!-- </div> -->
+        </div>
+
+    </div>
+
+    <script src="./lib/vue.min.js?v=235"></script>
+    <script src="./lib/echarts.min.js?v=235"></script>
+    <script src="./js/config.js?v=240"></script>
+    <script src="./js/components.js?v=237"></script>
+    <script src="./js/utils.js?v=244"></script>
+    <script src="./js/loading.js?v=235"></script>
+    <script src="./js/header.js?v=235"></script>
+    <script src="./js/charts.js?v=247"></script>
+    <script src="./js/center.js?v=241"></script>
+    <script src="./js/right.js?v=246"></script>
+    <!-- <script>
+        $(".saleTitle .title").hover(
+		  function () {
+			$(".tip").css("display",'inline-block');
+		  },
+		  function () {
+            $(".tip").hide();
+		  }
+		);
+    </script> -->
+</body>
+
+</html>

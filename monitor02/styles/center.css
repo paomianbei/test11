@@ -1,0 +1,196 @@
+.center {
+    width:30%;
+    position: relative;
+    top:15%;
+    height: 86%;
+    min-width: 350px;
+}
+.center .red{
+    color:red;
+}
+
+.center .center-top {
+    height: 14%;
+    width: 100%;
+}
+
+.center .sales {
+    width: 100%;
+    height: 100%
+}
+.center .sales .saleTitle img {
+    width: 15px;
+    height: 15px;
+    padding-left: 5px;
+}
+.center .sales .tip{
+    position: absolute;
+    left: 121px;
+    z-index: 100;
+    font-size: 15px;
+    color:rgba(255,255,255,0.7);
+    display: none;
+}
+.center .sales .title{
+    display: flex;
+    justify-content: space-between;
+}
+.center .sales .tq-sale{
+    font-size: 12px;
+    color: #fff;
+    line-height: 22px;
+}
+.center .sales .tq{
+    font-size: 16px;
+    color: #00ffff;
+}
+.center .sales .tq .red{
+    color: red;
+}
+.center .sales .tq .green{
+    color: Lime;
+}
+.center .saleAmount{
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.center .sales:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.center .sales .orderList{
+    position:relative;
+    left:30%;
+    display: inline-block;
+    color:#00ffff;
+    font-size: 15px;
+    top:4px;
+}
+.center .sales .orderList img{
+    width:20px;
+    height:20px;
+}
+
+.center .sales .orderList span{
+    margin-right: 5%;
+    position:relative;
+    top:-0.6vh;
+}
+
+.center .sales .saleTitle {
+    font-size: 16px;
+    margin-right: 10px;
+    font-weight: bold;
+    color: #ff00ff;
+}
+
+.center span.number, .center .yuan, .center .dot {
+    vertical-align: middle;
+    display: inline-block;
+    background:-webkit-linear-gradient(top, #0101fe, #602a97);
+    border-radius:4px;
+    font-family:Arial;
+    color:#fff0a4;
+    text-align: center;
+    height: auto;
+    font-size: 52px;
+    padding: 0 2px;
+    margin-right: 2px;
+}
+
+.center .dot{
+    padding:  0;
+}
+
+.center .yuan{
+    padding:0;
+    height:60%;
+    width:5%;
+}
+.center .yuan>span{
+    font-family: "Microsoft Yahei";
+    font-size:30px;
+
+    position:relative;
+    color:#fc6f06;
+}
+
+.center .center-center-top{
+    width: 100%;
+    height: 21%;
+}
+.center .center-center-bottom{
+    width: 100%;
+    height: 21%;
+}
+
+.center .center-bottom-top{
+    width: 100%;
+    height: 21%;
+}
+.center .center-bottom-bottom{
+    width: 100%;
+    height: 21%;
+}
+.center-center-top span,.center-center-bottom span,.center-bottom-top span,.center-bottom-bottom span{
+    font-size:16px;
+    font-weight: bold;
+    color:#ff00ff;
+    top:0;
+}
+
+.center .border{
+    /* border-top:1px solid #ff00ff; */
+     background-image: url("../images/border-b.png");
+    -webkit-background-size:100% 100%; 
+    height: 100%;
+    margin-top:5px;
+}
+
+.saleTask-realtime,.saleTask-summery{
+    width: 100%;
+    height:90%;
+}
+.nonelectric-realtime,.nonelectric-summery{
+    width: 100%;
+    height:90%;
+}
+
+@media (min-width: 1100px) {
+    .center span.number, .center .yuan, .center .dot{
+        font-size: 40px;
+    }
+} 
+@media (min-width: 1280px) {
+    .center span.number, .center .yuan, .center .dot{
+        font-size: 44px;
+    }
+} 
+
+@media (min-width: 1366px) {
+    .center span.number, .center .yuan, .center .dot{
+        font-size: 48px;
+    }
+}  
+
+@media (min-width: 1440px) {
+    .center span.number, .center .yuan, .center .dot{
+        font-size: 52px;
+    }
+} 
+
+@media (min-width: 1680px) {
+    .center span.number, .center .yuan, .center .dot{
+        font-size: 60px;
+    }
+} 
+@media (min-width: 1920px) {
+    .center span.number, .center .yuan, .center .dot{
+        font-size: 68px;
+    }
+} 
+

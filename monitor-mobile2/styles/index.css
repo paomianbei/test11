@@ -1,0 +1,103 @@
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Microsoft Yahei";
+}
+
+body {
+    color: #fff;
+    /*border:1px solid red;*/
+    background: url(../images/bg-min.png) repeat;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: #fff;
+    /*background: #0f2a42;*/
+}
+
+#loading img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 300px;
+    height: 300px;
+}
+
+
+#total {
+    width: 100%;
+    height: 100%;
+}
+
+
+.head{
+    overflow:hidden;
+}
+.head div{
+    overflow:hidden;
+}
+.head div img{ 
+    /* margin: 2%;
+    display: inline-block; */
+    width: 70px;
+    height: 70px;
+    float: left;
+}
+.head .title{
+    font-weight: normal;
+    font-family: "Microsoft Yahei";
+    font-size: 30px;
+    margin: 2%;
+    display: inline-block;
+    padding-left: 20px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    float:left;
+}
+.head .date{
+    margin-left: 2%;
+}
+.head .choose{
+    color: #0ff;
+    margin-top:1%;
+    margin-left:8%;
+    line-height: 30px;
+}
+.head .choose span{
+    display: inline-block;
+    height: 35px;
+    line-height: 35px;
+}
+.head .choose select {
+    width: 60px;
+    height: 30px;
+    border: 1px solid #fff;
+}
+#total table {
+    margin-top:3%;
+    width: 100%;
+}
+
+
+

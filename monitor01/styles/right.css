@@ -1,0 +1,331 @@
+.container .right {
+
+   
+    width:30%;
+    height: 100%;
+    min-width: 350px;
+}
+
+.right .right-top{
+    /* background: pink; */
+    width:100%;
+    height: 26%;
+    /* padding-top:5%; */
+
+}
+
+.right .totalTransferRate{
+    width:100%;
+    height:100%;
+}
+
+
+
+.right .right-center {
+    width: 100%;
+    height: 74%;
+}
+.right .right-bottom{
+    width:100%;
+}
+
+.right .usersTask{
+    position: relative;
+    width:100%;
+    height:100%;
+}
+
+
+
+.usersTask img{
+    position: relative;
+    top:1.5vh;
+    left:5%;
+
+}
+
+.usersTask:after{
+    display: block;
+    content: '';
+    clear:both;
+}
+.usersTask .service-wrapper{
+    height:100%;
+    width:80%;
+    float: right;
+    position: relative;
+}
+
+
+.usersTask .usersTaskTitle{
+    color: #ff00ff;
+    font-size: 17px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: -6px;
+    margin-left: 5%;
+}
+
+.usersTask h4{
+    color:#00ffff;
+    font-size: 25px;
+    position:relative;
+    height:30px;
+    line-height: 30px;
+    left:5%;
+    margin-top: -12px;
+
+}
+
+.usersTask .usersTaskInfo {
+    color:#00ffff;
+    font-size:12px;
+    position: relative;
+    height:20px;
+    line-height: 20px;
+    margin-top: -38px;
+
+    left:5%;
+}
+.usersTask .usersTaskInfo div{
+    display: inline-block;
+    margin-right:10%;
+    margin-top:5%;
+}
+
+.right-center .right-Summary{
+    width:100%;
+    height: 100%;
+}
+
+
+/* .right-center .right-Summary .divine-voucher .title,.right-center .right-Summary .blue-voucher .title,.right-center .right-Summary .realtime-users .title,.right-center .right-Summary .history-users .title{
+    color: #ff00ff;
+    font-size: 17px;
+    line-height: 20px;
+} */
+/* .right-center .right-Summary .divine-voucher .title,.right-center .right-Summary .blue-voucher .title,.right-center .right-Summary .realtime-users .title,.right-center .right-Summary .history-users .title{
+  
+    padding-bottom: 3%;
+}
+.right-center .right-Summary .divine-voucher .info,.right-center .right-Summary .blue-voucher .info,.right-center .right-Summary .realtime-users .info,.right-center .right-Summary .history-users .info{
+
+    padding-bottom: 3%;
+} */
+.right-center .right-Summary .title{
+    padding-bottom: 1%;
+    color: #ff00ff;
+    font-size: 17px;
+    line-height: 20px;
+}
+/* .right-Summary .info{
+    margin-bottom: 1%;
+} */
+.right-Summary .info p{
+    width: 100%;
+    line-height: 2.3;
+}
+.right-Summary .info em{
+    font-style: normal;
+    color:#1E90FF;
+    font-size: 16px;
+    line-height: 26px;
+    padding-right: 5px;
+}
+.right-Summary .info span{
+    display: inline-block;
+    font-style: normal;
+    color: #00ffff;
+    font-size: 16px;
+    position: relative;
+}
+/*11.27新增样式*/
+.right-Summary .offline-sales .info span .ratio {
+    font-weight: 600;
+}
+.right-Summary .title .time{
+    font-size: 14px;
+}
+
+.right-Summary .info span:nth-of-type(1){
+    width: 50%;
+}
+
+.right-Summary .info span:nth-of-type(2){
+    width: 48%;
+}
+
+.right-center .right-Summary .border:nth-of-type(1) {
+    height:36%;
+}
+.right-center .right-Summary .border:nth-of-type(2) {
+    height:24%;
+}
+.right-center .right-Summary .border:nth-of-type(3) {
+    height:40%;
+}
+.right-center .right-Summary .realtime-sales{
+    width:100%;
+    height: 32%;
+    margin-bottom: 2%;
+}
+.right-center .right-Summary .offline-sales{
+    width:100%;
+    /*height: 16%;*/
+    height:25%;  /*11.27新增样式*/
+    margin-bottom: 2%;
+}
+.right-center .right-Summary .divine-voucher{
+    width:100%;
+    /*height: 20%;*/
+    height: 22%; /*11.27新增样式*/
+    /* margin-bottom: 5%; */
+    /* height: 20%; */
+    margin-bottom: 2%;
+}
+.right-center .right-Summary i {
+    font-style: normal;
+}
+.right-center .right-Summary  .red{
+    color: red;
+}
+.right-center .right-Summary  .green{
+    color: Lime;
+}
+.right-center .right-Summary .blue-voucher{
+    width:100%;
+    height: 16%;
+    margin-bottom: 2%;
+}
+.right-center .right-Summary .realtime-users{
+    width:100%;
+    height: 30%;
+    margin-bottom: 2%;
+}
+.right-center .right-Summary .history-users{
+    width:100%;
+    height: 20%;
+}
+.padding {
+    padding: 10px 10px 0 10px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 1366px) {
+    .right-Summary .info p {
+        line-height: normal;
+    }
+    .right-center .right-Summary .realtime-sales{
+        margin-bottom: 0;
+    }
+    .right-center .right-Summary .offline-sales {
+        margin-bottom: 0;
+    }
+    .right-center .right-Summary .divine-voucher {
+        margin-bottom: 0;
+    }
+    .right-center .right-Summary .realtime-users{
+        margin-bottom: 0%;
+    }
+    .right-center .right-Summary .title{
+        padding-bottom: 0;
+    }
+    .padding {
+        padding: 5px 10px 0 10px;
+    }
+}
+
+@media (min-width: 1100px) {
+    .right-Summary .info em{
+        font-size: 12px;
+    }
+} 
+@media (min-width: 1280px) {
+    .right-Summary .info em{
+        font-size: 12px;
+    }
+    .right-Summary .info span{
+        font-size: 14px;
+    }
+} 
+
+@media (min-width: 1366px) {
+    .right-Summary .info em{
+        font-size: 14px;
+    }
+    .right-Summary .info span{
+        font-size: 16px;
+    }
+}  
+
+@media (min-width: 1440px) {
+    .right-Summary .info em{
+        font-size: 14px;
+    }
+    .right-Summary .info em{
+        font-size: 14px;
+    }
+} 
+
+@media (min-width: 1680px) {
+    .right-Summary .info em{
+        font-size: 14px;
+    }
+} 
+@media (min-width: 1920px) {
+    .right-Summary .info em{
+        font-size: 14px;
+    }
+} 
+
+
+
+.right .right-bottom{
+    margin-top: 7%;
+    width:100%;
+}
+
+
+.right-bottom .coupon{
+    display: none;
+    width:100%;
+
+}
+
+
+
+.right-bottom .groupon span,.right-bottom .coupon span{
+    color: #ff00ff;
+    padding-left: 4%;
+}
+
+.right-bottom .groupon-table, .right-bottom .coupon-table{
+    width:100%;
+    background-image: url("../images/phisical.png");
+    background-size: 100% 100%;
+    margin-top: 2%;
+    height:60%;
+}
+
+.groupon-table .g-head{
+    font-size: 14px;
+    color: #0099df;
+    width:25%;
+}
+
+.coupon-table .c-head{
+    color: #ff0098;
+    font-size: 14px;
+}
+
+.coupon-table .c-head2{
+    color: #0099df;
+    font-size: 14px;
+}
+
+.groupon-table td, .coupon-table td{
+    color:#00ffff;
+    font-size: 16px;
+    width:25%;
+    text-align: center;
+}

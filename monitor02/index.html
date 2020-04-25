@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>国美大数据实时播报</title>
+    <link rel="icon" href="images/icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="./styles/index.css?v=312">
+    <script src="./lib/jquery.min.js?v=300"></script>
+    <script>
+        //window.location = '/monitor-examples/theend.html';//活动结束
+        //
+//        let url = "/public/userStatus";
+//        $.ajax({
+//            type: "post",
+//            data: "",
+//            url: url,
+//            async: false,
+//            success: function (res) {
+//                var data = JSON.parse(res);
+//
+//                if ( data.success ) {
+//                    data = data.data;
+//                    if ( !data.is_login ) {
+//                        window.location = data.loginUrl + "?returnUrl=" + window.location.href;
+//                    }
+//                } else {
+//                    console.log(`登陆接口返回失败, ${url}`);
+//                    window.location = "/";
+//
+//                }
+//            },
+//            error: function (err) {
+//                console.log("请求接口失败", err);
+//                window.location = "/";
+//
+//            }
+//
+//        });
+    </script>
+</head>
+
+<body>
+    <div id="loading">
+        <a target="_blank" href="#">
+            <img src="./images/logo.png?v=301">
+
+        </a>
+    </div>
+    <div class="header">
+        <img src="images/title.png?v=305" alt="">
+        <div class="time">{{time}}</div>
+    </div>
+    <div class="container">
+        <div class="left">
+            <div class="left-top">
+                <span class="acce-bar">电器城实时销售（万）({{utils.getTimeDate().today}})</span>
+                <div class="border">
+                    <div class="electric-realtime"></div>
+                </div>
+            </div>
+            <div class="left-bottom">
+                <span class="acce-bar">电器城累计销售（万）（{{utils.getTimeDate().time}}）</span>
+                <div class="border">
+                    <div class="electric-summery"></div>
+                </div>
+            </div>
+        </div>
+        <div class="center">
+            <div class="center-top">
+                <div class="sales">
+                    <div class="title">
+                        <span class="saleTitle"><span class="title">成交金额</span></span>
+                        <span class="tq-sale">
+                            2018年销售额(万): <span class="tq">{{amount_tq}}</span>
+                            同比: <span class="tq">{{ratio_tb}}
+                                    <span class='green' v-if="flag===1">↑</span>
+                                    <span class='red' v-if="flag===2">↓</span>
+                                </span>
+                        </span>
+                    </div>
+                    <!-- <div class="orderList">
+                        <img src="./images/order.png" alt="">
+                        <span>{{orderNum}}</span>
+                    </div> -->
+                    <!-- <br /> -->
+                    <div class="saleAmount">
+                        <div class="yuan"><span>&yen;</span></div>
+                        <number v-for="(num, index) in saleArr" :update="update" :arr="saleArr" :num="num" :index="index"
+                            :delay="1000"></number>
+                    </div>
+                </div>
+
+            </div>
+            <div class="center-center-top">
+                <span class="acce-bar red">实时销售任务(万)({{utils.getTimeDate().today}})</span>
+                <div class="border">
+                    <div class="saleTask-realtime"></div>
+                </div>
+            </div>
+            <div class="center-center-bottom">
+                <span class="acce-bar red">累计销售任务(万)（{{utils.getTimeDate().time}}）</span>
+                <div class="border">
+                    <div class="saleTask-summery"></div>
+                </div>
+            </div>
+            <div class="center-bottom-top">
+                <span class="acce-bar">非电器实时销售(万)({{utils.getTimeDate().today}})</span>
+                <div class="border">
+                    <div class="nonelectric-realtime"></div>
+                </div>
+            </div>
+            <div class="center-bottom-bottom">
+                <span class="acce-bar">非电器累计销售(万)（{{utils.getTimeDate().time}}）</span>
+                <div class="border">
+                    <div class="nonelectric-summery"></div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="right-top">
+                <span class="acce-bar">平台家电实时销售（万）({{utils.getTimeDate().today}})</span>
+                <div class="border">
+                    <div class="platform-realtime"></div>
+                </div>
+            </div>
+            <div class="right-bottom">
+                <span class="acce-bar">平台家电累计销售（万）（{{utils.getTimeDate().time}}）</span>
+                <div class="border">
+                    <div class="platform-summery"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./lib/vue.min.js?v=234"></script>
+    <script src="./lib/echarts.min.js?v=234"></script>
+    <script src="./js/config.js?v=303"></script>
+    <script src="./js/components.js?v=302"></script>
+    <script src="./js/utils.js?v=304"></script>
+    <script src="./js/loading.js?v=300"></script>
+    <script src="./js/header.js?v=302"></script>
+    <script src="./js/charts.js?v=320"></script>
+    <script src="./js/center.js?v=314"></script>
+    <script src="./js/right.js?v=312"></script>
+    <!-- <script>
+        $(".saleTitle .title").hover(
+		  function () {
+			$(".tip").css("display",'inline-block');
+		  },
+		  function () {
+            $(".tip").hide();
+		  }
+        );
+    </script> -->
+</body>
+
+</html>

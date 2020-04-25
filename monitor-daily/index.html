@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2017年双十一战略日报</title>
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+<script>
+    //window.location = '/monitor-examples/theend.html';//活动结束
+</script>
+<body>
+    <div class="main">
+        <task-table id="t1" :data='saleTask.data' :title='saleTask.title'></task-table>
+        
+        <cate-table id="t2" :data="jiadian.data" :title="jiadian.title"></cate-table>
+        <cate-table id="t3" :data="baihuo.data" :title="baihuo.title"></cate-table>
+        <pay-transfer id="t4" :data="pay.data" :title="pay.title"></pay-transfer>
+    </div>
+
+    
+    <button id="btn">导出excel</button>
+    
+    <script src="./lib/jquery.min.js"></script>
+    <script src="./lib/jquery.query-object.js"></script>
+    <script src="./js/exportExcel.js"></script>
+    <script src="./lib/vue.min.js?v=234"></script>
+    <script src="./js/config.js?v=301"></script>
+    
+    <script src="./js/table.js"></script>
+    
+</body>
+</html>

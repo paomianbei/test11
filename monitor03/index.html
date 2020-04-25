@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>国美双十一表格大屏</title>
+    <link rel="icon" href="images/icon.png" type="image/x-icon" />
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./styles/elementUI.css?v=0517">
+    <link rel="stylesheet" href="./styles/index.css?v=0518">
+    <script src="./lib/jquery.min.js?v=234"></script>
+    <script>
+        //window.location = '/monitor-examples/theend.html';//活动结束
+
+        let url = "/public/loginStatus";
+        $.ajax({
+	        type: "post",
+	        data: "",
+	        url: url,
+	        async: false,
+	        success: function (res) {
+		        var data = JSON.parse(res);
+
+		        if ( data.success ) {
+                    data = data.data;
+                    
+			        if ( !data.is_login ) {
+				        window.location = data.loginUrl + "?returnUrl=" + window.location.href;
+			        }
+		        } else {
+			        console.log(`登陆接口返回失败, ${url}`);
+			        window.location = "/";
+
+		        }
+	        },
+	        error: function (err) {
+		        console.log("请求接口失败", err);
+		        window.location = "/";
+
+	        }
+
+        });
+        var now = new Date();
+        var logindate = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+    </script>
+</head>
+
+<body>
+    <div class="bgimg"></div>
+    <div id="loading">
+        <a target="_blank" href="#">
+            <img src="./images/logo.png?v=0517">
+        </a>
+    </div>
+    <div class="head">
+        <img src="./images/headbg1.png?v=0517" alt="">
+        <img src="./images/headbg2.png?v=0517" alt="">
+        <img src="./images/headbg3.png?v=0517" alt="">
+    </div>
+    <div id="content">
+        <div id="container">
+            <div class="header">
+                <tab v-on:ct="changeType"></tab>
+                <line-chart :type="type"></line-chart>
+            </div>
+            <!-- 动页 -->
+            <promot-data :type="type" v-if="type !== 'ALL'"></promot-data>
+            <!-- 热销 -->
+            <top-rank :type="type"></top-rank>
+            <!-- 库存 -->
+            <stock-data :type="type" v-if="type === 'ALL'"></stock-data>
+        </div>
+        <!-- 比价 -->
+        <div class="compare">
+            <h3>比价数据</h3>
+            <div class="pricelist">
+                <select @change="selectVal($event)">
+                    <option :value="index" v-for="(item,index) in catelist">{{item}}</option>
+                </select>
+                <div id="scrolltable">
+                    <table id="scrolltable" class="table" style="table-layout: fixed;width:100%;">
+                        <colgroup>
+                            <col style="width: 13%;"></col>
+                            <col style="width: 48%;"></col>
+                            <col style="width: 13%;"></col>
+                            <col style="width: 13%;"></col>
+                            <col style="width: 13%;"></col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>{{list.title}}TOP100 </th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>SKU</th>
+                                <th>商品名称</th>
+                                <th style="text-align:right;">国美价</th>
+                                <th style="text-align:right;">京东价</th>
+                                <th style="text-align:right;">苏宁价</th>
+                            </tr>
+                        </thead>
+                        <tbody  class="waterwave5">
+                            <tr v-for="(item,index) in list">
+                                <td>{{item.skuid}}</td>
+                                <td style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;" :title="item.name">{{item.name}}</td>
+                                <td style="text-align:right;">
+                                    <span v-if="item.price_gome == '0'">-</span>
+                                    <span v-else>¥{{item.price_gome | format}}</span>
+                                </td>
+                                <td style="text-align:right;">
+                                    <span v-if="item.price_jd == '0'">{{item.price_jd_show}}</span>
+                                    <span v-else-if="(item.price_jd == item.price_gome)">¥{{item.price_jd | format}}</span>
+                                    <span class="reduce" v-else-if="(item.price_jd > item.price_gome) && (item.price_jd != '0') ">¥{{item.price_jd | format}}↑</span>
+                                    <span class="add" v-else-if="(item.price_jd < item.price_gome) && (item.price_jd != '0') ">¥{{item.price_jd | format}}↓</span>
+                                </td>
+                                <td style="text-align:right;">
+                                    <span v-if="item.price_suning == '0'">{{item.price_suning_show}}</span>
+                                    <span v-else-if="(item.price_suning == item.price_gome)">¥{{item.price_suning | format}}</span>
+                                    <span class="reduce" v-else-if="(item.price_suning > item.price_gome) && (item.price_suning != '0')">¥{{item.price_suning | format}}↑</span>
+                                    <span class="add" v-else-if="(item.price_suning < item.price_gome) && (item.price_suning != '0') ">¥{{item.price_suning | format}}↓</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="box" class="box">
+        <div class="box-in">
+        </div>
+    </div>
+    
+    <script src="./lib/jquery.flip.min.js?v=234"></script>
+    <script src="./lib/vue.min.js?v=234"></script>
+    <script src="./lib/elementUI.js?v=234"></script>
+    <script src="./lib/echarts.min.js?v=234"></script>
+    <script src="./js/config.js?v=234"></script>
+    <script src="./js/utils.js?v=301"></script>
+    <script src="./js/loading.js?v=234"></script>
+    <script src="./js/tab.js?v=235"></script>
+    <script src="./js/lineChart.js?v=234"></script>
+    <script src="./js/promot.js?v=234"></script>
+    <script src="./js/topRank.js?v=235"></script>
+    <script src="./js/stock.js?v=234"></script>
+    <script src="./js/compare.js?v=234"></script>
+    <script src="./js/components.js?v=234"></script>
+    <script src="./js/loop.js?v=234"></script>
+</body>
+
+</html>

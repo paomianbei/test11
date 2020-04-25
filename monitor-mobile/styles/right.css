@@ -1,0 +1,38 @@
+.right-418 {
+    flex: 1;
+    margin-top: -20px;
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100% + 50px);
+    height: 100%;
+    width: 24%;
+}
+
+.right-418 span{
+    font-size: 40px;
+}
+
+.right-418 .meifubao {
+    /*width: */
+    /*width: 100%;*/
+    height: calc(40% - 50px);;
+    margin: 0;
+    /*float: left;*/
+}
+
+.right-418 .meifubao>div {
+    margin-top: -10px !important;
+    margin-left: -10px !important;
+}
+
+.right-418 .saleAmountRatio>div {
+    float: left;
+    margin-top: -40px !important;
+    margin-left: -30px !important;
+}
+
+.right-418 .saleAmountRatio {
+    /*width: calc(100% - 20px);*/
+    height: 45%;
+    margin: 0;
+}

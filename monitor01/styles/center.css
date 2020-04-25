@@ -1,0 +1,293 @@
+
+.center {
+    /* border:1px solid yellow; */
+    width:30%;
+    position: relative;
+    top:16%;
+    height: 86%;
+    min-width: 350px;
+}
+
+
+.center .sales {
+    height: 100%;
+    width: 100%;
+
+    /* padding-left:4%; */
+    /* border: 1px solid red; */
+}
+.center .sales .saleTitle img {
+    width: 15px;
+    height: 15px;
+    padding-left: 5px;
+}
+.center .saleAmount{
+    /* min-width:480px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: -9%; */
+    /*border:1px solid red;*/
+    /* min-width:480px; */
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    /* margin-left: -9%; */
+}
+
+.center .sales:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.center .sales .orderList{
+    /*border:1px solid red;*/
+
+    position:relative;
+    left:60%;
+    display: inline-block;
+    color:#00ffff;
+    font-size: 15px;
+}
+.center .sales .tip{
+    position: absolute;
+    left: 121px;
+    z-index: 100;
+    font-size: 15px;
+    color:rgba(255,255,255,0.7);
+    display: none;
+}
+.center .sales .title {
+    display: flex;
+    justify-content: space-between;
+}
+.center .sales .tq-sale{
+    font-size: 12px;
+    color: #fff;
+    line-height: 22px;
+}
+.center .sales .tq{
+    font-size: 16px;
+    color: #00ffff;
+}
+.center .sales .tq .red{
+    color: red;
+}
+.center .sales .tq .green{
+    color: Lime;
+}
+.center .sales .orderList img{
+    width:20px;
+    height:20px;
+}
+
+.center .sales .orderList span{
+    /* border:1px solid red; */
+    position:relative;
+    margin-right: 5%;
+    top:-0.6vh;
+}
+
+.center .sales .saleTitle {
+    font-size: 17px;
+    /*width: 50px;*/
+    /* vertical-align: middle; */
+    /* margin-left: 4%; */
+    margin-right: 10px;
+    font-weight: bold;
+    color: #ff00ff;
+}
+
+.center span.number, .center .yuan, .center .dot {
+    vertical-align: middle;
+    display: inline-block;
+    background:-webkit-linear-gradient(top, #0101fe, #602a97);
+    border-radius:4px;
+    font-family:Arial;
+    color:#fff0a4;
+    text-align: center;
+    height: auto;
+    font-size: 52px;
+    padding: 0 2px;
+    margin-right: 2px;
+}
+
+.center .dot{
+    padding:  0;
+}
+
+.center .yuan{
+    padding:0;
+    /*margin-right:-3px;*/
+    height:60%;
+    width:5%;
+}
+.center .yuan>span{
+    font-family: "Microsoft Yahei";
+    font-size:30px;
+
+    position:relative;
+    color:#fc6f06;
+}
+
+.order{
+    display: none;
+    width:110%;
+    min-width:480px;
+    /*margin-top:20px;*/
+    /*padding-left:4%;*/
+    /*border:1px solid green;*/
+}
+
+.order:after{
+    content:'';
+    display: block;
+    clear: both;
+}
+
+.phisical{
+    float:left;
+    width:65%;
+
+}
+
+.phisicalTitle {
+    color:#ff00ff;
+    /*margin-left:4%;*/
+    padding-left: 4%;
+    margin: 2% 0;
+    font-size:14px;
+}
+
+.phisical table{
+    width:100%;
+    background-image: url("../images/phisical-3.png");
+    background-size: 100% 100%;
+}
+
+.phisicalCate, .virtualCate{
+    color:#0099df;
+    font-size: 14px;
+}
+.phisicalCate th{
+    width:25%;
+    padding-top:2%;
+}
+
+.order td{
+    color:#00ffff;
+    font-size: 12px;
+    text-align: center;
+}
+
+.orderTable{
+    border-spacing:0;
+}
+.virtual{
+    float:left;
+    width:32%;
+}
+.virtualTitle{
+    color: #ff00ff;
+    padding-left: 4%;
+    font-size:14px;
+    margin: 4px 0;
+}
+.virtual table{
+    width:100%;
+    background-image: url("../images/virtual.png");
+    background-size: 100% 100%;
+}
+
+.virtual th{
+    width:25%;
+    padding:3% 0;
+}
+
+.center-top{
+    height: 16%;
+}
+
+.center-center, .center-bottom{
+    position: relative;
+    /* border:1px solid red; */
+    /* padding-top: 2%; */
+    width:100%;
+    /* height:33%; */
+    height:42%;
+}
+
+.center-center span, .center-bottom span{
+    font-size:17px;
+    font-weight: bold;
+    color:#ff00ff;
+    /* padding:0 6%; */
+
+    /*border:1px solid green;*/
+    top:0;
+}
+
+.center-center .border, .center-bottom .border{
+    width:100%;
+    height:88%;
+    /*margin-left:4%;*/
+    /* margin-top:1%; */
+}
+
+
+.center-center .saleChannel{
+    width:100%;
+    height:100%;
+}
+
+.center-bottom .transferRateAndOrder{
+    width:100%;
+    height:100%;
+}
+
+/* @media screen and (max-width: 1336px) {
+    .center span.number, .center .yuan, .center .dot{
+        font-size: 39px;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    .center span.number, .center .yuan, .center .dot{
+        font-size: 39px;
+    }
+} */
+
+@media (min-width: 1100px) {
+    .center span.number, .center .yuan, .center .dot{
+        font-size: 40px;
+    }
+} 
+@media (min-width: 1280px) {
+    .center span.number, .center .yuan, .center .dot{
+        font-size: 44px;
+    }
+} 
+
+@media (min-width: 1366px) {
+    .center span.number, .center .yuan, .center .dot{
+        font-size: 48px;
+    }
+}  
+
+@media (min-width: 1440px) {
+    .center span.number, .center .yuan, .center .dot{
+        font-size: 52px;
+    }
+} 
+
+@media (min-width: 1680px) {
+    .center span.number, .center .yuan, .center .dot{
+        font-size: 60px;
+    }
+} 
+@media (min-width: 1920px) {
+    .center span.number, .center .yuan, .center .dot{
+        font-size: 68px;
+    }
+} 

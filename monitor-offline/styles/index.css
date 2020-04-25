@@ -1,0 +1,282 @@
+@import './left.css';
+@import './right.css';
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    font-family: "Microsoft Yahei";
+}
+
+body {
+    background: url(../images/bg1.png) 0% 0% / 100%;
+    overflow: hidden;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: #fff;
+    /*background: #0f2a42;*/
+}
+
+#loading img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 300px;
+    height: 300px;
+}
+
+
+
+/*#loading img.text-logo {
+  margin-top: 60px;
+  margin-left: -50px;
+  width: 100px;
+}*/
+
+.header {
+    width: 100%;
+    height: 132px;
+    background-image: url(../images/bg2.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+}
+.header .titleWrapper{
+    margin: 0 auto;
+    /*border:1px solid red;*/
+    width:20%;
+    height:80%;
+}
+.titleWrapper img{
+    position:relative;
+    left:calc(-50% + 35px);
+    top:15px;
+    width:70px;
+    height:70px;
+}
+.titleWrapper .title {
+    width: 440px;
+    height: 45px;
+    color: #fff;
+    font-weight: normal;
+    font-family: "Microsoft Yahei";
+    font-size: 30px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    left:-40px;
+    top:-50%;
+    /*margin: 18px 0 10px;*/
+}
+
+.titleWrapper .date {
+    color:#f0f0f0;
+    vertical-align: middle;
+    position: relative;
+    left:40px;
+    top:-60%;
+}
+
+.container {
+    height: 90%;
+    max-width: 100%;
+    margin: -10px 20px 0;
+    display: flex;
+    flex-wrap: nowrap;
+    /*border:1px solid red;*/
+}
+
+.container:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.container>div {
+    /*float: left;*/
+    height: 100%;
+    color: #fff;
+}
+
+.container .center {
+    /*border:1px solid red;*/
+    flex: 2;
+    min-width: 700px;
+    margin-top: -20px;
+}
+
+
+.sales img{
+    width:18px;
+    height:18px;
+    position: relative;
+    left:50%;
+}
+
+.orderNum{
+    position: relative;
+    left:50%;
+    top:-2px;
+}
+
+
+.center .sales {
+    height: 100px;
+    width: 100%;
+
+}
+
+.center .sales:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.center .sales .saleTitle {
+    font-size: 20px;
+    width: 50px;
+    vertical-align: middle;
+    margin-right: 10px;
+    /*color: rgba(255, 255, 255, 0.298039);*/
+    /*color: #D7D7D7;*/
+    color: #0ff;
+}
+
+.center span.number {
+    vertical-align: middle;
+    background-color: rgba(90, 200, 250, 0.2);
+    display: inline-block;
+    min-width: 34px;
+    text-align: center;
+    height: auto;
+    font-size: 54px;
+    padding: 0 4px;
+    margin-right: 3px;
+}
+.center span.dot{
+    vertical-align: middle;
+    background-color: rgba(90, 200, 250, 0.2);
+    display: inline-block;
+    min-width: 17px;
+    text-align: center;
+    height: auto;
+    font-size: 54px;
+    padding: 0 3px;
+    margin-right: 3px;
+}
+.center .order {
+    margin-top: 20px;
+    height: 120px;
+    width: 100%;
+    /*border:1px solid yellow;*/
+}
+
+.center .order:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+
+
+.center .order .table {
+    border-collapse: collapse;
+    border: none;
+    width: calc(100% - 12px);
+
+}
+
+.center .order .table th,
+.center .order .table td {
+    border: 1px solid #fff;
+    text-align: center;
+}
+
+.center .order .table th {
+    color: #000;
+}
+
+.center .order .table td {
+    color: #fff;
+}
+.center .center-center{
+    width:100%;
+    height:15vh;
+    /*border:1px solid green;*/
+}
+.center-center>span{
+    margin-left: 20px;
+    color: #0ff;
+    font-size: 20px;
+}
+.center-center .saleTable{
+    width:calc(100% - 12px);
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.saleTable th, .saleTable td{
+    border: 1px solid #fff;
+}
+
+.table, .saleTable{
+    margin:4px;
+}
+
+.center .center-bottom{
+    height:32vh;
+    width:100%;
+    /*border:1px solid blue;*/
+
+}
+
+
+.center>div {
+    margin: 10px auto;
+}
+
+.center>.sales {
+    width: 680px;
+}
+.o-frame {
+    border-radius: 0px;
+    border-style: solid;
+    border-width: 26px 27px 27px;
+    border-image-source: url(../images/frame.png);
+    border-image-slice: 26 27 27 fill;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: repeat;
+    background: none;
+    box-sizing: border-box;
+}
+
+
+.container h4 {
+    color:#0ff;
+    font-weight: normal;
+    font-family: "Microsoft Yahei";
+    font-size: 20px;
+    margin: 5px 0;
+}

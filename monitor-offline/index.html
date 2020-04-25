@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>国美双11实时播报</title>
+    <link rel="stylesheet" href="./styles/index.css?v=0517">
+    <link rel="icon" href="images/test.png" type="image/x-icon" />
+    <script>
+        window.location.href = '/monitor-examples/theend.html';//活动结束
+        if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
+	        
+	        window.location.href ="../monitor-mobile/";
+        }
+    </script>
+</head>
+
+<body>
+    <div id="loading">
+        <a target="_blank" href="#">
+            <img src="./images/logo.png?v=0517">
+            <!--<img class="text-logo" src="/static/image/logo-text.png" width="100/">-->
+        </a>
+    </div>
+    <div class="header">
+        <div class="titleWrapper">
+            <img src="images/test.png" alt="">
+            <span class="title">双11实时播报</span>
+            <!--<br/>-->
+            <!--<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"-->
+            <!--style="width: 18px; height: 18px; margin-right: 5px;vertical-align: middle;">-->
+            <!--<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">-->
+            <!--<g transform="translate(-920.000000, -643.000000)" fill="#5DF5F4" class="icon-path" style="fill: rgb(93, 93, 93);">-->
+            <!--<path d="M929,661 C924.028906,661 920,656.971094 920,652 C920,647.028906 924.028906,643 929,643 C933.971094,643 938,647.028906 938,652 C938,656.971094 933.971094,661 929,661 L929,661 Z M934.468555,646.531445 C933.758398,645.821289 932.930469,645.262305 932.009375,644.873828 C931.056641,644.469531 930.044141,644.265625 929,644.265625 C927.955859,644.265625 926.943359,644.469531 925.990625,644.87207 C925.069531,645.262305 924.243359,645.819531 923.531445,646.529688 C922.821289,647.239844 922.262305,648.067773 921.873828,648.988867 C921.469531,649.943359 921.265625,650.955859 921.265625,652 C921.265625,653.044141 921.469531,654.056641 921.87207,655.009375 C922.262305,655.930469 922.819531,656.756641 923.529688,657.468555 C924.239844,658.178711 925.067773,658.737695 925.988867,659.126172 C926.943359,659.530469 927.955859,659.734375 929,659.734375 C930.044141,659.734375 931.056641,659.530469 932.009375,659.12793 C932.930469,658.737695 933.756641,658.180469 934.468555,657.470312 C935.178711,656.760156 935.737695,655.932227 936.126172,655.011133 C936.530469,654.056641 936.734375,653.044141 936.734375,652 C936.734375,650.955859 936.530469,649.943359 936.12793,648.990625 C935.737695,648.069531 935.180469,647.241602 934.468555,646.531445 L934.468555,646.531445 Z M932.884766,652.140625 L929.632812,652.140625 L929.632812,656.359375 C929.632812,656.70918 929.349805,656.992188 929,656.992188 L929,656.992188 C928.650195,656.992188 928.367188,656.70918 928.367188,656.359375 L928.367188,652.140625 L928.367188,652.140625 C928.367188,651.441016 928.933203,650.875 929.632812,650.875 L929.632812,650.875 L932.884766,650.875 C933.23457,650.875 933.517578,651.158008 933.517578,651.507812 L933.517578,651.507812 C933.517578,651.857617 933.23457,652.140625 932.884766,652.140625 L932.884766,652.140625 Z"-->
+            <!--transform="translate(929.000000, 652.000000) scale(1, -1) translate(-929.000000, -652.000000)"></path>-->
+            <!--</g>-->
+            <!--</g>-->
+            <!--</svg>-->
+            <span class="date">{{time}}</span>
+        </div>
+        
+    </div>
+    <div class="container">
+        <div class="left-418">
+            <h4>今日UV</h4>
+            <span>0</span>
+            <div class="uvChannel o-frame">
+            </div>
+            <h4>销售渠道分布</h4>
+            <div class="saleChannel o-frame">
+            </div>
+        </div>
+        <div class="center">
+            <div class="center-top">
+                <div class="sales">
+                    <span class="saleTitle">线上线下实物总销售额 </span>
+                    
+                    <img src="images/order.png" alt="">
+                    <span class="orderNum">{{orderNum}}</span>
+                    <br>
+                    <span class="number">￥</span>
+                    <number v-for="(num, index) in saleArr" :update="update" :arr="saleArr" :num="num" :index="index" :delay="1000"></number>
+                </div>
+                <div class="order">
+                        <table class="table">
+                            <tr style="background: rgb(80, 181, 71);">
+                                <th style="background: rgb(200, 200, 0)" rowspan="2">线上已支付订单</th>
+                                <th rowspan="2">线下金力订单</th>
+                                <th colspan="3">线上引流订单</th>
+                            </tr>
+                            <tr style="background: rgb(220,220,0);">
+                                <th>场景一</th>
+                                <th>场景二</th>
+                                <th>场景三</th>
+                            </tr>
+                            <tr>
+                                <td>{{channelSale.pay}}万</td>
+                                <td>{{channelSale.jinli}}万</td>
+                                <td>{{channelSale.scene1}}万</td>
+                                <td>{{channelSale.scene2}}万</td>
+                                <td>{{channelSale.scene3}}万</td>
+                            </tr>
+                            <tr>
+                                <td>{{orderAmount.pay}}</td>
+                                <td>{{orderAmount.jinli}}</td>
+                                <td>{{orderAmount.scene1}}</td>
+                                <td>{{orderAmount.scene2}}</td>
+                                <td>{{orderAmount.scene3}}</td>
+                            </tr>
+                        </table>
+                   </div>
+               
+            </div>
+            <div class="center-center">
+                    <span>线下大区订单销售数据</span>
+                    <table class="saleTable">
+                        <tr  style="background: rgb(220,220,0);color:black;">
+                            <td style="background: rgb(80, 181, 71);">地区</td>
+                            <td v-for="item in data">{{item.regionName}}</td>
+                          
+                            
+                        </tr>
+                        <tr>
+                            <td style="background: rgb(80, 181, 71);color:black;">销售额</td>
+                            <td v-for="item in data">{{item.saleAmount}}万</td>
+                          
+                        </tr>
+                        <tr>
+                            <td style="background: rgb(80, 181, 71);color:black;">订单量</td>
+                            <td v-for="item in data">{{item.orderCount}}</td>
+                          
+                        </tr>
+                    </table>
+                </div>
+            <div class="center-bottom o-frame"></div>
+        </div>
+         <div class="right-418">
+            <h4>美付宝数据</h4>
+            <div class="meifubao o-frame">
+            </div>
+            <h4>线上线下销售占比</h4>
+            <div class="saleAmountRatio o-frame">
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./lib/jquery.min.js?v=234"></script>
+    <script src="./lib/vue.min.js?v=234"></script>
+    <script src="./lib/echarts.js?v=234"></script>
+    <script src="./js/config.js?v=234"></script>
+    <script src="./js/components.js?v=234"></script>
+    <script src="./js/utils.js?v=234"></script>
+    <script src="./js/loading.js?v=234"></script>
+    <script src="./js/header.js?v=234"></script>
+    <script src="./js/charts.js?v=234"></script>
+    <script src="./js/center.js?v=235"></script>
+</body>
+
+</html>
